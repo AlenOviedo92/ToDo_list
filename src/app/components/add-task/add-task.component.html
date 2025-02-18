@@ -1,1 +1,35 @@
-<p>COMPONENTE PARA AGREGAR TAREAS</p>
+<form [style.background]="'#ffb703'">
+    <h3>AGREGAR TAREAS</h3>
+    <mat-form-field appearance="fill">
+        <mat-label>Título de la Tarea</mat-label>
+        <input matInput placeholder="Ingrese el título de la tarea">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline">
+        <mat-label>Fecha de Vencimiento</mat-label>
+        <input matInput [matDatepicker]="picker" placeholder="Seleccione una fecha">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline">
+        <mat-label>Prioridad</mat-label>
+        <mat-select>
+            <mat-option value="alta">Alta</mat-option>
+            <mat-option value="media">Media</mat-option>
+            <mat-option value="baja">Baja</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline">
+        <mat-label>Descripción</mat-label>
+        <input matInput placeholder="Ingrese la descripción de la tarea">
+    </mat-form-field>
+    <br>
+    <mat-checkbox>Tarea Recurrente</mat-checkbox>
+    <br>
+    <button mat-raised-button color="primary">Agregar Tarea</button>
+  </form>
+  
+  
+  
