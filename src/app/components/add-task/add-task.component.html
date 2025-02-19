@@ -12,6 +12,9 @@
                 placeholder="Ingrese el título de la tarea"
                 formControlName="title"
             >
+            @if (taskForm.get('title')?.hasError('required')) {
+                <mat-error>El título es obligatorio</mat-error>
+            }
         </mat-form-field>
 
         <mat-form-field appearance="outline">
@@ -21,9 +24,13 @@
                 [matDatepicker]="picker" 
                 placeholder="Seleccione una fecha"
                 formControlName="dueDate"
+                [min]="minDate"
             >
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
+            @if (taskForm.get('dueDate')?.hasError('required')) {
+                <mat-error>La fecha de vencimiento es obligatoria</mat-error>
+            }
         </mat-form-field>
 
         <mat-form-field appearance="outline">
@@ -33,6 +40,9 @@
                 <mat-option value="media">Media</mat-option>
                 <mat-option value="baja">Baja</mat-option>
             </mat-select>
+            @if (taskForm.get('priority')?.hasError('required')) {
+                <mat-error>La prioridad es obligatoria</mat-error>
+            }
         </mat-form-field>
 
         <mat-form-field appearance="outline">

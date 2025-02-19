@@ -5,7 +5,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TaskService } from '../../services/task.service';
 
@@ -26,31 +26,37 @@ import { TaskService } from '../../services/task.service';
 })
 export class AddTaskComponent {
     taskForm: FormGroup;
+    minDate: Date = new Date(); // Fecha mínima: hoy
 
     constructor(private fb: FormBuilder, private taskService: TaskService) {
         this.taskForm = this.fb.group({
-            title: [''],
-            dueDate: [''],
-            priority: [''],
+            title: ['', Validators.required],
+            dueDate: ['', Validators.required],
+            priority: ['', Validators.required],
             description: [''],
             isRecurring: [false]
         });
     }
 
     addTask(): void {
-        console.log('Datos del formulario: ', this.taskForm.value);
-        if(this.taskForm.valid) {
-            const formData = this.taskForm.value;
-            const newTask = {
-                task: formData.title,
-                priority: formData.priority,
-                description: formData.description,
-                date: formData.dueDate,
-                recurring: formData.isRecurring,
-            };
-
-            this.taskService.addTask(newTask);
-            this.taskForm.reset(); // Limpiar formulario después de agregar la tarea
+        if(this.taskForm.invalid) {
+            console.log('El formulario no es válido', this.taskForm.value);
+            return;
         }
+
+        console.log('Datos del formulario: ', this.taskForm.value);
+        const formData = this.taskForm.value;
+        console.log(formData);
+        console.log(this.taskForm.valid);
+        const newTask = {
+            task: formData.title,
+            priority: formData.priority,
+            description: formData.description,
+            date: formData.dueDate,
+            recurring: formData.isRecurring,
+        };
+
+        this.taskService.addTask(newTask);
+        this.taskForm.reset(); // Limpiar formulario después de agregar la tarea
     }
 }

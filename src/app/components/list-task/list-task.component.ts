@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
     styleUrl: './list-task.component.scss'
 })
 export class ListTaskComponent {
-    displayedColumns: string[] = ['task', 'priority', 'description', 'date', 'recurring'];
+    displayedColumns: string[] = ['position', 'task', 'priority', 'description', 'date', 'recurring'];
     dataSource$: Observable<ITask[]>;
 
     constructor(private taskService: TaskService) {
