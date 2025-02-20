@@ -19,4 +19,9 @@ export class TaskService {
         this.tasks.push(newTask);
         this.tasksSubject.next([...this.tasks]); // Emitir el nuevo listado de tareas
     }
+
+    // deleteTask(id: number) {
+    //     const updatedTasks = this.tasksSubject.getValue().filter(task => task.id !== id);
+    //     this.tasksSubject.next(updatedTasks);
+    // }
 }
