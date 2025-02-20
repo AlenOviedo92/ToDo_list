@@ -1,1 +1,75 @@
-<p>COMPONENTE PARA AGREGAR TAREAS</p>
+<div class="body">
+    <form
+        [formGroup]="taskForm"
+        (ngSubmit)="addTask()"
+        class="form_container"
+    >
+        <h3>AGREGAR TAREAS</h3>
+        <mat-form-field appearance="outline">
+            <mat-label>Título de la Tarea</mat-label>
+            <input 
+                matInput 
+                placeholder="Ingrese el título de la tarea"
+                formControlName="title"
+            >
+            @if (taskForm.get('title')?.hasError('required')) {
+                <mat-error>El título es obligatorio</mat-error>
+            }
+            @if (taskForm.get('title')?.hasError('maxlength')) {
+                <mat-error>Máximo 20 caracteres</mat-error>
+            }     
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Fecha de Vencimiento</mat-label>
+            <input 
+                matInput 
+                [matDatepicker]="picker" 
+                placeholder="Seleccione una fecha"
+                formControlName="dueDate"
+                [min]="minDate"
+                readonly
+            >
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            @if (taskForm.get('dueDate')?.hasError('required')) {
+                <mat-error>La fecha de vencimiento es obligatoria</mat-error>
+            }       
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Prioridad</mat-label>
+            <mat-select formControlName="priority">
+                <mat-option value="alta">Alta</mat-option>
+                <mat-option value="media">Media</mat-option>
+                <mat-option value="baja">Baja</mat-option>
+            </mat-select>
+            @if (taskForm.get('priority')?.hasError('required')) {
+                <mat-error>La prioridad es obligatoria</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Descripción</mat-label>
+            <input 
+                matInput 
+                placeholder="Ingrese la descripción de la tarea"
+                formControlName="description"
+            >
+        </mat-form-field>
+
+        <mat-checkbox formControlName="isRecurring">
+            Tarea Recurrente
+        </mat-checkbox>
+
+        <button 
+            mat-raised-button 
+            color="primary"
+            type="submit"
+            [disabled]="taskForm.invalid"
+        >
+            Agregar Tarea
+        </button>
+    </form>
+</div>
+  
