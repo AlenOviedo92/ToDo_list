@@ -7,9 +7,9 @@ import { ITask } from '../models/tasks';
 })
 export class TaskService {
     private tasks: ITask[] = [
-        { task: 'programar', priority: 'alta', description: 'Programar en Angular', date: '11/11/25', recurring: true },
-        { task: 'rodar', priority: 'media', description: 'Ir hasta Nariño', date: '11/12/25', recurring: false },
-        { task: 'leer', priority: 'media', description: 'Leer a Octavio Paz', date: '20/05/25', recurring: true },
+        { task: 'programar', priority: 'alta', description: 'Programar en Angular', date: '11/11/25', recurring: 'Si' },
+        { task: 'rodar', priority: 'media', description: 'Ir hasta Nariño', date: '11/12/25', recurring: 'No' },
+        { task: 'leer', priority: 'media', description: 'Leer a Octavio Paz', date: '20/05/25', recurring: 'Si' },
     ];
 
     private tasksSubject = new BehaviorSubject<ITask[]>(this.tasks);

@@ -5,8 +5,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { TaskService } from '../../services/task.service';
 
 @Component({
@@ -30,11 +29,11 @@ export class AddTaskComponent {
 
     constructor(private fb: FormBuilder, private taskService: TaskService) {
         this.taskForm = this.fb.group({
-            title: ['', Validators.required],
+            title: ['', [Validators.required, Validators.maxLength(20)]],
             dueDate: ['', Validators.required],
             priority: ['', Validators.required],
             description: [''],
-            isRecurring: [false]
+            isRecurring: ['']
         });
     }
 
@@ -53,7 +52,7 @@ export class AddTaskComponent {
             priority: formData.priority,
             description: formData.description,
             date: formData.dueDate,
-            recurring: formData.isRecurring,
+            recurring: formData.isRecurring ? 'Si' : 'No',
         };
 
         this.taskService.addTask(newTask);

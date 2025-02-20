@@ -3,5 +3,5 @@ export interface ITask {
     priority: string;
     description: string;
     date: string;
-    recurring: boolean;
+    recurring: string;
 }

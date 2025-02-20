@@ -15,6 +15,9 @@
             @if (taskForm.get('title')?.hasError('required')) {
                 <mat-error>El título es obligatorio</mat-error>
             }
+            @if (taskForm.get('title')?.hasError('maxlength')) {
+                <mat-error>Máximo 20 caracteres</mat-error>
+            }     
         </mat-form-field>
 
         <mat-form-field appearance="outline">
@@ -25,12 +28,13 @@
                 placeholder="Seleccione una fecha"
                 formControlName="dueDate"
                 [min]="minDate"
+                readonly
             >
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
             @if (taskForm.get('dueDate')?.hasError('required')) {
                 <mat-error>La fecha de vencimiento es obligatoria</mat-error>
-            }
+            }       
         </mat-form-field>
 
         <mat-form-field appearance="outline">
@@ -62,6 +66,7 @@
             mat-raised-button 
             color="primary"
             type="submit"
+            [disabled]="taskForm.invalid"
         >
             Agregar Tarea
         </button>
