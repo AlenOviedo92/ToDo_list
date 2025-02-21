@@ -5,6 +5,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ITask } from '../../models/tasks';
 import { TaskService } from '../../services/task.service';
 import { Observable } from 'rxjs';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-list-task',
@@ -12,13 +13,14 @@ import { Observable } from 'rxjs';
     imports: [
         MatTableModule,
         MatIconModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        FormsModule
     ],
     templateUrl: './list-task.component.html',
     styleUrl: './list-task.component.scss'
 })
 export class ListTaskComponent {
-    displayedColumns: string[] = ['position', 'task', 'priority', 'description', 'date', 'recurring', 'actions'];
+    displayedColumns: string[] = ['completed', 'position', 'task', 'priority', 'description', 'date', 'recurring', 'actions'];
     dataSource$: Observable<ITask[]>;
 
     constructor(private taskService: TaskService) {
@@ -27,5 +29,9 @@ export class ListTaskComponent {
 
     deleteTask(index: number) {
         this.taskService.deleteTask(index);
+    }
+
+    toggleTask(index: number) {
+        this.taskService.toggleTask(index);
     }
 }

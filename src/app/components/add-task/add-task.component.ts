@@ -53,6 +53,7 @@ export class AddTaskComponent {
             description: formData.description,
             date: formData.dueDate,
             recurring: formData.isRecurring ? 'Si' : 'No',
+            completed: false
         };
 
         this.taskService.addTask(newTask);
