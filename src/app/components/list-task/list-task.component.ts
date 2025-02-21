@@ -24,4 +24,8 @@ export class ListTaskComponent {
     constructor(private taskService: TaskService) {
         this.dataSource$ = this.taskService.tasks$; // Vincularse al observable del servicio
     }
+
+    deleteTask(index: number) {
+        this.taskService.deleteTask(index);
+    }
 }
