@@ -29,5 +29,6 @@ export class TaskService {
     toggleTask(index: number) {
         this.tasks[index].completed = !this.tasks[index].completed; // Cambiar estado
         this.tasksSubject.next([...this.tasks]); // Emitir el nuevo listado
+        console.log(this.tasks$);
     }
 }

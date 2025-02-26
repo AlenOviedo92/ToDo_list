@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -11,6 +12,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-list-task',
     standalone: true,
     imports: [
+        CommonModule,
         MatTableModule,
         MatIconModule,
         MatCheckboxModule,
