@@ -20,7 +20,7 @@
             mat-cell 
             *matCellDef="let element"
         > 
-            <span [ngClass]="{'underline': element.completed}">{{element.task}}</span>
+            <span [ngClass]="{'underline': element.completed}" [appStatusTask]="element.completed">{{element.task}}</span>
         </td>
     </ng-container>
   

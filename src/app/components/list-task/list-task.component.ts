@@ -7,6 +7,7 @@ import { ITask } from '../../models/tasks';
 import { TaskService } from '../../services/task.service';
 import { Observable } from 'rxjs';
 import { FormsModule } from '@angular/forms';
+import { StatusTaskDirective } from '../../directives/status-task.directive';
 
 @Component({
     selector: 'app-list-task',
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
         MatTableModule,
         MatIconModule,
         MatCheckboxModule,
-        FormsModule
+        FormsModule,
+        StatusTaskDirective
     ],
     templateUrl: './list-task.component.html',
     styleUrl: './list-task.component.scss'
