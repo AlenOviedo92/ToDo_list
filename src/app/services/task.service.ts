@@ -15,20 +15,20 @@ export class TaskService {
     private tasksSubject = new BehaviorSubject<ITask[]>(this.tasks);
     tasks$ = this.tasksSubject.asObservable();
   
-    addTask(newTask: ITask) {
+    addTask(newTask: ITask): void {
         this.tasks.push(newTask);
-        this.tasksSubject.next([...this.tasks]); // Emitir el nuevo listado de tareas
+        this.tasksSubject.next([...this.tasks]);                    // Emitir el nuevo listado de tareas
     }
 
-    deleteTask(index: number) {
+    deleteTask(index: number): void {
         this.tasks.splice(index, 1);
         this.tasksSubject.next([...this.tasks]);
         console.log(this.tasks$);
     }
 
-    toggleTask(index: number) {
+    toggleTask(index: number): void {
         this.tasks[index].completed = !this.tasks[index].completed; // Cambiar estado
-        this.tasksSubject.next([...this.tasks]); // Emitir el nuevo listado
+        this.tasksSubject.next([...this.tasks]);                    // Emitir el nuevo listado
         console.log(this.tasks$);
     }
 }
