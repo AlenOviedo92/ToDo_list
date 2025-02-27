@@ -17,7 +17,7 @@ export class TaskService {
   
     addTask(newTask: ITask): void {
         this.tasks.push(newTask);
-        this.tasksSubject.next([...this.tasks]); // Emitir el nuevo listado de tareas
+        this.tasksSubject.next([...this.tasks]);                    // Emitir el nuevo listado de tareas
     }
 
     deleteTask(index: number): void {
@@ -28,7 +28,7 @@ export class TaskService {
 
     toggleTask(index: number): void {
         this.tasks[index].completed = !this.tasks[index].completed; // Cambiar estado
-        this.tasksSubject.next([...this.tasks]); // Emitir el nuevo listado
+        this.tasksSubject.next([...this.tasks]);                    // Emitir el nuevo listado
         console.log(this.tasks$);
     }
 }
