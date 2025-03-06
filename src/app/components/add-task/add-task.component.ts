@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -7,11 +8,15 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { TaskService } from '../../services/task.service';
+import { PriorityService } from '../../services/priority.service';
+import { IPriority } from '../../models/priority';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-add-task',
     standalone: true,
     imports: [
+        CommonModule,
         MatFormFieldModule, 
         MatInputModule, 
         MatDatepickerModule, 
@@ -23,11 +28,16 @@ import { TaskService } from '../../services/task.service';
     templateUrl: './add-task.component.html',
     styleUrl: './add-task.component.scss'
 })
-export class AddTaskComponent {
+export class AddTaskComponent implements OnInit {
     taskForm: FormGroup;
     minDate: Date = new Date(); // Fecha mínima: hoy
+    dataSource$: Observable<IPriority[]>;
 
-    constructor(private fb: FormBuilder, private taskService: TaskService) {
+    constructor(
+        private fb: FormBuilder, 
+        private taskService: TaskService,
+        private priorityService: PriorityService,
+    ) {
         this.taskForm = this.fb.group({
             title: ['', [Validators.required, Validators.maxLength(20)]],
             dueDate: ['', Validators.required],
@@ -35,6 +45,8 @@ export class AddTaskComponent {
             description: [''],
             isRecurring: ['']
         });
+
+        this.dataSource$ = this.priorityService.priorities$; // Vincularse al observable del servicio
     }
 
     addTask(): void {
@@ -59,5 +71,9 @@ export class AddTaskComponent {
 
         this.taskService.addTask(newTask);
         this.taskForm.reset(); // Limpiar formulario después de agregar la tarea
+    }
+
+    ngOnInit(): void {
+        this.priorityService.getPriority(); // Carga las prioridades al iniciar
     }
 }
