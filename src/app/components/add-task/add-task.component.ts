@@ -48,6 +48,7 @@ export class AddTaskComponent {
         console.log(formData);
         console.log(this.taskForm.valid);
         const newTask = {
+            id: crypto.randomUUID(),
             task: formData.title,
             priority: formData.priority,
             description: formData.description,

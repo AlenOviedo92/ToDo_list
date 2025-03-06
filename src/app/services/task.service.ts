@@ -1,28 +1,33 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { ITask } from '../models/tasks';
 
 @Injectable({
     providedIn: 'root'
 })
 export class TaskService {
-    private tasks: ITask[] = [
-        // { task: 'programar', priority: 'alta', description: 'Programar en Angular', date: '11/11/25', recurring: 'Si', completed: false },
-        // { task: 'rodar', priority: 'media', description: 'Ir hasta Nariño', date: '11/12/25', recurring: 'No', completed: false },
-        // { task: 'leer', priority: 'media', description: 'Leer a Octavio Paz', date: '20/05/25', recurring: 'Si', completed: false },
-    ];
-
+    private tasks: ITask[] = [];
     private tasksSubject = new BehaviorSubject<ITask[]>(this.tasks);
+    private apiUrl = 'http://localhost:3001/tasks'; // URL del backend
     tasks$ = this.tasksSubject.asObservable();
 
-    constructor() {
+    constructor(private http: HttpClient) {
         this.getTask();                                               //Una vez instanciado este servicio, la función getTask está disponible
     }
 
-    getTask(): ITask[] {
-        this.getFromLocalStorage();                                   //Obtengo todas las tareas del localStorage
-        this.tasksSubject.next([...this.tasks]);
-        return this.tasks;
+    getTask(): void {
+        // this.getFromLocalStorage();                                   //Obtengo todas las tareas del localStorage
+        // this.tasksSubject.next([...this.tasks]);
+        // return this.tasks;
+
+        this.http.get<ITask[]>(this.apiUrl).subscribe({
+            next: (tasks) => {
+                this.tasks = tasks;
+                this.tasksSubject.next([...this.tasks]);                 // Emitimos los datos actualizados
+            },
+            error: (error) => console.error('Error al obtener las tareas:', error)
+        });
     }
   
     addTask(newTask: ITask): void {
