@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { StatusTaskDirective } from '../../directives/status-task.directive';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
+import { MatButtonModule } from '@angular/material/button';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-list-task',
@@ -22,7 +24,8 @@ import { ModalComponent } from '../modal/modal.component';
         FormsModule,
         StatusTaskDirective,
         MatDialogModule,
-        ModalComponent
+        ModalComponent,
+        MatButtonModule,
     ],
     templateUrl: './list-task.component.html',
     styleUrl: './list-task.component.scss'
@@ -31,7 +34,11 @@ export class ListTaskComponent implements OnInit {
     displayedColumns: string[] = ['completed', 'position', 'task', 'priority', 'description', 'date', 'recurring', 'actions'];
     dataSource$: Observable<ITask[]>;
 
-    constructor(private taskService: TaskService, private dialog: MatDialog) {
+    constructor(
+        private taskService: TaskService,
+        private dialog: MatDialog,
+        private router: Router,
+    ) {
         this.dataSource$ = this.taskService.tasks$; // Vincularse al observable del servicio
     }
 
@@ -48,8 +55,16 @@ export class ListTaskComponent implements OnInit {
         });
     }
 
+    updateTask(id: string): void {
+        console.log('Editar tarea con id: ', id);
+    }
+
     toggleTask(id: string) {
         this.taskService.toggleTask(id);
+    }
+
+    openForm(): void {
+        this.router.navigate(['/create']);
     }
 
     ngOnInit(): void {

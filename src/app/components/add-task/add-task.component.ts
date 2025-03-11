@@ -11,6 +11,7 @@ import { TaskService } from '../../services/task.service';
 import { PriorityService } from '../../services/priority.service';
 import { IPriority } from '../../models/priority';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-add-task',
@@ -30,13 +31,14 @@ import { Observable } from 'rxjs';
 })
 export class AddTaskComponent implements OnInit {
     taskForm: FormGroup;
-    minDate: Date = new Date(); // Fecha mínima: hoy
+    minDate: Date = new Date();                             // Fecha mínima: hoy
     dataSource$: Observable<IPriority[]>;
 
     constructor(
         private fb: FormBuilder, 
         private taskService: TaskService,
         private priorityService: PriorityService,
+        private router: Router,
     ) {
         this.taskForm = this.fb.group({
             title: ['', [Validators.required, Validators.maxLength(20)]],
@@ -63,17 +65,18 @@ export class AddTaskComponent implements OnInit {
             id: crypto.randomUUID(),
             task: formData.title,
             priorityId: formData.priority,
-            description: formData.description,
+            description: formData.description || '',
             date: formData.dueDate,
             recurring: formData.isRecurring ? 'Si' : 'No',
             completed: false
         };
 
         this.taskService.addTask(newTask);
-        this.taskForm.reset(); // Limpiar formulario después de agregar la tarea
+        this.taskForm.reset();                               // Limpiar formulario después de agregar la tarea
+        this.router.navigate(['/']);
     }
 
     ngOnInit(): void {
-        this.priorityService.getPriority(); // Carga las prioridades al iniciar
+        this.priorityService.getPriority();                  // Carga las prioridades al iniciar
     }
 }

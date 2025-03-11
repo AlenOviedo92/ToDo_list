@@ -1,3 +1,15 @@
 .underline {
     text-decoration: line-through;
 }
+
+.add_tasks {
+    margin-top: 70px;
+    width: 500px;
+    border-radius: 3px;
+}
+
+.add_tasks_container {
+    display: flex;
+    justify-content: center; // Centra horizontalmente
+    align-items: center;     // Asegura que el botón esté alineado verticalmente
+}
