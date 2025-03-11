@@ -62,7 +62,7 @@ export class AddTaskComponent implements OnInit {
         const newTask = {
             id: crypto.randomUUID(),
             task: formData.title,
-            priority: formData.priority,
+            priorityId: formData.priority,
             description: formData.description,
             date: formData.dueDate,
             recurring: formData.isRecurring ? 'Si' : 'No',

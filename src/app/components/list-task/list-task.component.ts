@@ -35,7 +35,7 @@ export class ListTaskComponent implements OnInit {
         this.dataSource$ = this.taskService.tasks$; // Vincularse al observable del servicio
     }
 
-    deleteTask(index: number): void {
+    deleteTask(index: string): void {
         const dialogRef = this.dialog.open(ModalComponent, {
             width: '300px',
             data: { message: '¿Estás seguro que deseas eliminar esta tarea?'}
@@ -48,8 +48,8 @@ export class ListTaskComponent implements OnInit {
         });
     }
 
-    toggleTask(index: number) {
-        this.taskService.toggleTask(index);
+    toggleTask(id: string) {
+        this.taskService.toggleTask(id);
     }
 
     ngOnInit(): void {
