@@ -39,7 +39,7 @@ export class ListTaskComponent implements OnInit {
         private dialog: MatDialog,
         private router: Router,
     ) {
-        this.dataSource$ = this.taskService.tasks$; // Vincularse al observable del servicio
+        this.dataSource$ = this.taskService.tasks$; // Me vinculo al observable del servicio
     }
 
     deleteTask(index: string): void {
@@ -55,16 +55,16 @@ export class ListTaskComponent implements OnInit {
         });
     }
 
-    updateTask(id: string): void {
-        console.log('Editar tarea con id: ', id);
-    }
-
     toggleTask(id: string) {
         this.taskService.toggleTask(id);
     }
 
     openForm(): void {
         this.router.navigate(['/create']);
+    }
+
+    openUpdateTask(id: string): void {
+        this.router.navigate([`/update/${id}`]);
     }
 
     ngOnInit(): void {

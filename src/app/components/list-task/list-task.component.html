@@ -42,7 +42,7 @@
         <!-- Date Column -->
         <ng-container matColumnDef="date">
             <th mat-header-cell *matHeaderCellDef> Fecha de Vencimiento </th>
-            <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.date | date: 'dd/MM/yyyy'}} </td>
         </ng-container>
         
         <!-- Recurring Column -->
@@ -55,7 +55,7 @@
         <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef> Acciones </th>
             <td mat-cell *matCellDef="let element">
-                <button mat-icon-button color="accent" (click)="updateTask(element.id)">
+                <button mat-icon-button color="accent" (click)="openUpdateTask(element.id)">
                     <mat-icon>edit</mat-icon>
                 </button>
                 <button mat-icon-button color="warn" (click)="deleteTask(element.id)">
