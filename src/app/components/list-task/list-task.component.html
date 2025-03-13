@@ -1,7 +1,18 @@
 @if ((dataSource$ | async)?.length === 0) {
     <h2>No hay tareas disponibles</h2>
 } @else {
-    <table mat-table [dataSource]="dataSource$" class="mat-elevation-z8">
+    <div class="filter-container">
+        <mat-form-field appearance="outline">
+            <mat-label>Filtrar tareas</mat-label>
+            <mat-select [(value)]="filterValue" (selectionChange)="applyFilter()">
+                <mat-option value="all">Todas</mat-option>
+                <mat-option value="completed">Completadas</mat-option>
+                <mat-option value="pending">Pendientes</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <table mat-table [dataSource]="(filteredTasks$ | async) ?? []" class="mat-elevation-z8">
         <!-- Checkbox Column -->
         <ng-container matColumnDef="completed">
             <th mat-header-cell *matHeaderCellDef> ✅ </th>
