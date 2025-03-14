@@ -32,7 +32,7 @@ import { ITask } from '../../models/tasks';
 })
 export class EditTaskComponent implements OnInit {
 	taskForm: FormGroup;
-    minDate: Date = new Date();                             // Fecha mínima: hoy
+    minDate: Date = new Date();
     dataSource$: Observable<IPriority[]>;
 	taskId!: string;
 
@@ -51,7 +51,7 @@ export class EditTaskComponent implements OnInit {
             isRecurring: ['']
         });
 
-        this.dataSource$ = this.priorityService.priorities$; // Vincularse al observable del servicio
+        this.dataSource$ = this.priorityService.priorities$;
 	}
 
     updateTask(): void {
@@ -64,15 +64,15 @@ export class EditTaskComponent implements OnInit {
 			priorityId: this.taskForm.value.priority,
 			description: this.taskForm.value.description,
 			recurring: this.taskForm.value.isRecurring ? 'Si' : 'No',
-			completed: false // O el estado que ya tenga la tarea
+			completed: false
 		};
 		console.log(updatedTask);
 		this.taskService.updateTask(this.taskId, updatedTask);
-		this.router.navigate(['/']); // Redirige después de actualizar
+		this.router.navigate(['/']);
     }
 
 	ngOnInit(): void {
-        this.priorityService.getPriority();                  // Carga las prioridades al iniciar
+        this.priorityService.getPriority();
 
 		this.taskId = this.route.snapshot.paramMap.get('id') || '';
 
@@ -88,7 +88,7 @@ export class EditTaskComponent implements OnInit {
 						const matchingPriority = priorities.find(p => p.id === task.priorityId);
 						console.log('Prioridad encontrada:', matchingPriority);
 
-						this.taskForm.patchValue({				 // Lleno el form con los datos de la tarea
+						this.taskForm.patchValue({
 							title: task.task,
 							dueDate: task.date ? new Date(task.date) : '',
 							priority: matchingPriority ? matchingPriority.id : '',

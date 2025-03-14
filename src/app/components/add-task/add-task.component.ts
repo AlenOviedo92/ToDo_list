@@ -31,7 +31,7 @@ import { Router } from '@angular/router';
 })
 export class AddTaskComponent implements OnInit {
     taskForm: FormGroup;
-    minDate: Date = new Date();                             // Fecha mínima: hoy
+    minDate: Date = new Date();
     dataSource$: Observable<IPriority[]>;
 
     constructor(
@@ -48,7 +48,7 @@ export class AddTaskComponent implements OnInit {
             isRecurring: ['']
         });
 
-        this.dataSource$ = this.priorityService.priorities$; // Vincularse al observable del servicio
+        this.dataSource$ = this.priorityService.priorities$;
     }
 
     addTask(): void {
@@ -70,11 +70,11 @@ export class AddTaskComponent implements OnInit {
         };
 
         this.taskService.addTask(newTask);
-        this.taskForm.reset();                               // Limpiar formulario después de agregar la tarea
+        this.taskForm.reset();
         this.router.navigate(['/']);
     }
 
     ngOnInit(): void {
-        this.priorityService.getPriority();                  // Carga las prioridades al iniciar
+        this.priorityService.getPriority();
     }
 }

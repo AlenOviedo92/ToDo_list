@@ -11,8 +11,8 @@ import { provideNativeDateAdapter, MAT_DATE_LOCALE } from '@angular/material/cor
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
     providers: [
-        provideNativeDateAdapter(), // Proveedor de adaptación de fechas nativo
-        { provide: MAT_DATE_LOCALE, useValue: 'es-ES' } // Configuración del idioma opcional
+        provideNativeDateAdapter(),
+        { provide: MAT_DATE_LOCALE, useValue: 'es-ES' }
     ]
 })
 export class AppComponent {

@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ViewChild } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
     selector: 'app-list-task',
@@ -32,7 +33,8 @@ import { ViewChild } from '@angular/core';
         MatButtonModule,
         MatFormFieldModule,
         MatSelectModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        MatCardModule
     ],
     templateUrl: './list-task.component.html',
     styleUrl: './list-task.component.scss'

@@ -18,6 +18,12 @@
     margin-top: 8px;
 }
 
+.table-wrapper {
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: 60vh;
+}
+
 table {
     width: 1000px;
 }
