@@ -21,12 +21,12 @@ La aplicación cuenta con 3 vistas:
 
 1. **Lista de tareas:** En esta vista es posible visualizar una tabla que contiene las tareas creadas por el usuario. La tabla cuenta con 8 columnas:
     1. Check: Marca una tarea como "completada" o "pendiente".
-    2. No: Indica el número de tareas en la aplicación
-    3. Tarea: El título de la tarea
-    4. Prioridad: Indica la prioridad de la tarea
-    5. Descripción: Descripción detallada de la tarea
-    6. Fecha de vencimiento: Fecha de vencimiento de la tarea
-    7. Recurrente: Indica si la tarea es recurrente o no
+    2. No: Indica el número de tareas en la aplicación.
+    3. Tarea: El título de la tarea.
+    4. Prioridad: Indica la prioridad de la tarea.
+    5. Descripción: Descripción detallada de la tarea.
+    6. Fecha de vencimiento: Fecha de vencimiento de la tarea.
+    7. Recurrente: Indica si la tarea es recurrente o no.
     8. Acciones: Contiene dos botones, para eliminar o actualizar una tarea.
 
     La tabla tiene integrado un paginador en la parte inferior con las opciones 5, 10 o 20 ítems por página. Además cuenta con un filtro en la parte superiror, que muestra todas las tareas, las pendientes y las completadas.
