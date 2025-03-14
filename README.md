@@ -33,7 +33,7 @@ La aplicación cuenta con 3 vistas:
 
 2. **Formulario de creación:** Contiene los siguientes inputs:
 
-    1. Título: Título o nombre de la tarea. Cuenta con dos validaciones: debe ser obligatorio y contener máximo 20 caracteres.
+    1. Título: Título o nombre de la tarea. Cuenta con tres validaciones: debe ser obligatorio, contener máximo 20 caracteres y no se admiten números ni caracteres especiales.
     2. Fecha: Fecha de vencimiento de la tarea. Cuenta con dos validaciones: debe ser obligatoria y tener el formato correcto.
     3. Prioridad: Prioridad de la tarea. Cuenta con una validación: debe ser obligatoria.
     4. Descripción: Descripción de la tarea(opcional).

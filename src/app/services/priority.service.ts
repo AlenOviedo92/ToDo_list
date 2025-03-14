@@ -23,4 +23,4 @@ export class PriorityService {
             error: (error) => console.error('Error al obtener las tareas:', error)
         });
     }
-}
+} 

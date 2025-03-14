@@ -21,4 +21,4 @@ export const routes: Routes = [
         redirectTo: '/tasks',
         pathMatch: 'full'
     },
-];
+]; 

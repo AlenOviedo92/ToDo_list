@@ -41,7 +41,7 @@ export class AddTaskComponent implements OnInit {
         private router: Router,
     ) {
         this.taskForm = this.fb.group({
-            title: ['', [Validators.required, Validators.maxLength(20)]],
+            title: ['', [Validators.required, Validators.maxLength(20), Validators.pattern(/^[A-Za-z\s]+$/)]],
             dueDate: ['', Validators.required],
             priority: ['', Validators.required],
             description: [''],

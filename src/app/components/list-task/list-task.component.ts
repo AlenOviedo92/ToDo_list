@@ -102,4 +102,4 @@ export class ListTaskComponent implements OnInit, AfterViewInit {
         }
         this.dataSource.data = filteredTasks;
     }
-}
+} 
