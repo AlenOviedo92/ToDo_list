@@ -66,7 +66,6 @@ export class EditTaskComponent implements OnInit {
 			recurring: this.taskForm.value.isRecurring ? 'Si' : 'No',
 			completed: false
 		};
-		console.log(updatedTask);
 		this.taskService.updateTask(this.taskId, updatedTask);
 		this.router.navigate(['/']);
     }
@@ -78,15 +77,9 @@ export class EditTaskComponent implements OnInit {
 
 		if(this.taskId) {
 			this.taskService.getTaskById(this.taskId).subscribe(task => {
-				console.log('Datos de la tarea obtenidos:', task);
-
 				if(task) {
 					this.priorityService.priorities$.subscribe(priorities => {
-						console.log('Prioridades cargadas: ', priorities);
-						console.log(task);
-
 						const matchingPriority = priorities.find(p => p.id === task.priorityId);
-						console.log('Prioridad encontrada:', matchingPriority);
 
 						this.taskForm.patchValue({
 							title: task.task,
@@ -100,4 +93,4 @@ export class EditTaskComponent implements OnInit {
 			});
 		}
     }
-} 
+}
