@@ -29,7 +29,7 @@ La aplicación cuenta con 3 vistas:
     7. Recurrente: Indica si la tarea es recurrente o no.
     8. Acciones: Contiene dos botones, para eliminar o actualizar una tarea.
 
-    La tabla tiene integrado un paginador en la parte inferior con las opciones 5, 10 o 20 ítems por página. Además cuenta con un filtro en la parte superiror, que muestra todas las tareas, las pendientes y las completadas.
+    La tabla tiene integrado un paginador en la parte inferior con las opciones 5, 10 o 20 ítems por página. Además cuenta con un filtro en la parte superiror, que muestra todas las tareas, las tareas pendientes y las tareas completadas.
 
 2. **Formulario de creación:** Contiene los siguientes inputs:
 
