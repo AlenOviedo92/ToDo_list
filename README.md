@@ -12,7 +12,7 @@ Al diseñar la estructura del proyecto se tiene en cuenta el principio Separatio
 
 La aplicación cuenta con 3 vistas:
 
-- Lista de tareas: En esta vista es posible visualizar una tabla que contiene las tareas creadas por el usuario. La tabla cuenta con 8 columnas:
+1. Lista de tareas: En esta vista es posible visualizar una tabla que contiene las tareas creadas por el usuario. La tabla cuenta con 8 columnas:
     1. Check: Marca una tarea como "completada" o "pendiente".
     2. No: Indica el número de tareas en la aplicación
     3. Tarea: El título de la tarea
@@ -22,7 +22,9 @@ La aplicación cuenta con 3 vistas:
     7. Recurrente: Indica si la tarea es recurrente o no
     8. Acciones: Contiene dos botones, para eliminar o actualizar una tarea.
 
-- Formulario de creación: Contiene los siguientes inputs:
+    La tabla tiene integrado un paginador en la parte inferior con las opciones 5, 10 o 20 ítems por página. Además cuenta con un filtro en la parte superiror, que muestra todas las tareas, las pendientes y las completadas.
+
+2. Formulario de creación: Contiene los siguientes inputs:
 
     1. Título: Título o nombre de la tarea. Cuenta con dos validaciones: debe ser obligatorio y contener máximo 20 caracteres.
     2. Fecha: Fecha de vencimiento de la tarea. Cuenta con dos validaciones: debe ser obligatoria y tener el formato correcto.
@@ -30,9 +32,9 @@ La aplicación cuenta con 3 vistas:
     4. Descripción: Descripción de la tarea(opcional).
     5. Tarea recurrente: Marca la tarea como recurrente o no(opcional).
 
-NOTA: El botón "Enviar" se activa, cuando los 3 inputs obligatorios están diligenciados y pasan las validaciones mencionadas anteriormente.
+    NOTA: El botón "Enviar" se activa, cuando los 3 inputs obligatorios están diligenciados y pasan las validaciones mencionadas anteriormente.
 
-- Formulario de actualización: Contiene los mismos inputs y validaciones que el formulario de creación.
+3. Formulario de actualización: Contiene los mismos inputs y validaciones que el formulario de creación.
 
 ## **INSTRUCCIONES DE INSTALACIÓN Y EJECUCIÓN:**
 
