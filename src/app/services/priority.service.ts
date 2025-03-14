@@ -9,7 +9,7 @@ import { IPriority } from '../models/priority';
 export class PriorityService {
     private priorities: IPriority[] = [];
     private prioritiesSubject = new BehaviorSubject<IPriority[]>(this.priorities);
-    private apiUrl = 'http://localhost:3001/priorities'; // URL del backend
+    private apiUrl = 'http://localhost:3001/priorities';
     priorities$ = this.prioritiesSubject.asObservable();
 
     constructor(private http: HttpClient) { }
@@ -18,7 +18,7 @@ export class PriorityService {
         this.http.get<IPriority[]>(this.apiUrl).subscribe({
             next: (priorities) => {
                 this.priorities = priorities;
-                this.prioritiesSubject.next([...this.priorities]);                 // Emitimos los datos actualizados
+                this.prioritiesSubject.next([...this.priorities]);
             },
             error: (error) => console.error('Error al obtener las tareas:', error)
         });

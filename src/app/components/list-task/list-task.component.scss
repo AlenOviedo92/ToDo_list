@@ -10,6 +10,47 @@
 
 .add_tasks_container {
     display: flex;
-    justify-content: center; // Centra horizontalmente
-    align-items: center;     // Asegura que el botón esté alineado verticalmente
+    justify-content: center;
+    align-items: center;     
+}
+
+.paginator {
+    margin-top: 8px;
+}
+
+.table-wrapper {
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: 60vh;
+}
+
+table {
+    width: 1000px;
+}
+
+.mat-column-task,
+.mat-column-description {
+    width: 20%;
+}
+
+.mat-column-priority,
+.mat-column-date,
+.mat-column-recurring {
+    width: 15%;
+}
+
+.mat-column-actions {
+    width: 20%;
+    text-align: center;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    table {
+        width: 100%;
+    }
 }
