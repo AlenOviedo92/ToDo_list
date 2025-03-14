@@ -1,4 +1,4 @@
-@if ((dataSource$ | async)?.length === 0) {
+@if (dataSource.data.length === 0) {
     <h2>No hay tareas disponibles</h2>
 } @else {
     <div class="filter-container">
@@ -12,7 +12,7 @@
         </mat-form-field>
     </div>
 
-    <table mat-table [dataSource]="(filteredTasks$ | async) ?? []" class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <!-- Checkbox Column -->
         <ng-container matColumnDef="completed">
             <th mat-header-cell *matHeaderCellDef> ✅ </th>
@@ -78,6 +78,10 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
+    <div class="paginator">
+        <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
 }
 <div class="add_tasks_container">
     <button

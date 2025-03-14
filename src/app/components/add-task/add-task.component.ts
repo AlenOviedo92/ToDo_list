@@ -57,10 +57,8 @@ export class AddTaskComponent implements OnInit {
             return;
         }
 
-        console.log('Datos del formulario: ', this.taskForm.value);
         const formData = this.taskForm.value;
-        console.log(formData);
-        console.log(this.taskForm.valid);
+
         const newTask = {
             id: crypto.randomUUID(),
             task: formData.title,
