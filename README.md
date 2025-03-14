@@ -1,27 +1,42 @@
-# ToDoList
+## **HERRAMIENTAS UTILIZADAS:**
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10.
+TypeScript, Angular y Angular Material.
 
-## Development server
+## **JUSTIFICACIÓN DEL STACK TECNOLÓGICO Y PATRONES DE DISEÑO:**
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Para el desarrollo del frontend, se ha optado por un stack tecnológico basado en TypeScript, Angular y Angular Material. Al utilizar TypeScript, mejora la calidad del código proporcionando detección temprana de errores y facilitando el mantenimiento. Angular garantiza modularización y un enfoque estructurado. Al implementar Angular Material se tiene acceso a componentes preconstruídos que le dan un aspecto profesional y consistente a la aplicación, lo que permite ahorrar tiempo en el desarrollo del UI/UX. 
 
-## Code scaffolding
+Al diseñar la estructura del proyecto se tiene en cuenta el principio Separation of Concerns (SoC), cada responsabilidad está separada en módulos específicos (components, services, directives, models). Además, se aplica una arquitectura basada en componentes (add-task, list-task, edit-task, modal), esto garantiza la independencia entre componentes y su posible reutilización. También se implementa el patrón de diseño Dependency Injection (DI), reflejado en la utilización de servicios (task.service.ts y priority.service.ts), que manejan de forma independiente la lógica del negocio y las solicitudes al backend. Finalmente, se trabaja con el modelo MVC adaptado a Angular; los modelos(Task y Priority) definen la estructura de los datos, las vistas serían los archivos .html(components) y los controladores estarían representados por los archivos .ts(components).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## **FUNCIONALIDADES DE LA APLICACIÓN**
 
-## Build
+La aplicación cuenta con 3 vistas:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Lista de tareas: En esta vista es posible visualizar una tabla que contiene las tareas creadas por el usuario. La tabla cuenta con 8 columnas:
+    1. Check: Marca una tarea como "completada" o "pendiente".
+    2. No: Indica el número de tareas en la aplicación
+    3. Tarea: El título de la tarea
+    4. Prioridad: Indica la prioridad de la tarea
+    5. Descripción: Descripción detallada de la tarea
+    6. Fecha de vencimiento: Fecha de vencimiento de la tarea
+    7. Recurrente: Indica si la tarea es recurrente o no
+    8. Acciones: Contiene dos botones, para eliminar o actualizar una tarea.
 
-## Running unit tests
+- Formulario de creación: Contiene los siguientes inputs:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    1. Título: Título o nombre de la tarea. Cuenta con dos validaciones: debe ser obligatorio y contener máximo 20 caracteres.
+    2. Fecha: Fecha de vencimiento de la tarea. Cuenta con dos validaciones: debe ser obligatoria y tener el formato correcto.
+    3. Prioridad: Prioridad de la tarea. Cuenta con una validación: debe ser obligatoria.
+    4. Descripción: Descripción de la tarea(opcional).
+    5. Tarea recurrente: Marca la tarea como recurrente o no(opcional).
 
-## Running end-to-end tests
+NOTA: El botón "Enviar" se activa, cuando los 3 inputs obligatorios están diligenciados y pasan las validaciones mencionadas anteriormente.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Formulario de actualización: Contiene los mismos inputs y validaciones que el formulario de creación.
 
-## Further help
+## **INSTRUCCIONES DE INSTALACIÓN Y EJECUCIÓN:**
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. Dentro de la carpeta "ToDo" (que se sugirió crear en el README.md de intrucciones del backend) ejecutar el comando: **git clone https://github.com/AlenOviedo92/ToDo_list.git**
+2. Ingresar al directorio clonado: **cd ToDo_list**
+3. Instalar las dependencias: **npm install**
+4. Levantar el servidor, ejecutando el comando: **ng serve -o**
