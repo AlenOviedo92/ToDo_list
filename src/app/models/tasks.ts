@@ -6,4 +6,4 @@ export interface ITask {
     date: string;
     recurring: string;
     completed: boolean;
-}
+} 

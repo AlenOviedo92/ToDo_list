@@ -100,4 +100,4 @@ export class EditTaskComponent implements OnInit {
 			});
 		}
     }
-}
+} 

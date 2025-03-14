@@ -25,4 +25,4 @@ export class ModalComponent {
     onCancel(): void {
         this.dialogRef.close(false);
     }
-}
+} 

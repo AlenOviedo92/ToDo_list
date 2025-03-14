@@ -17,7 +17,10 @@
             }
             @if (taskForm.get('title')?.hasError('maxlength')) {
                 <mat-error>Máximo 20 caracteres</mat-error>
-            }     
+            } 
+            @if (taskForm.get('title')?.hasError('pattern')) {
+                <mat-error>No se admiten números ni caracteres especiales</mat-error>
+            }
         </mat-form-field>
 
         <mat-form-field appearance="outline">
