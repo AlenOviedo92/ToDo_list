@@ -1,0 +1,6 @@
+{
+    "public": "dist/to-do-frontend",
+    "routes": [
+      { "src": "/(.*)", "dest": "/index.html" }
+    ]
+}
