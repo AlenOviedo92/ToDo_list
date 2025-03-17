@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ITask } from '../models/tasks';
+import { environment } from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -9,7 +10,8 @@ import { ITask } from '../models/tasks';
 export class TaskService {
     private tasks: ITask[] = [];
     private tasksSubject = new BehaviorSubject<ITask[]>(this.tasks);
-    private apiUrl = 'http://localhost:3001/tasks';                   
+    // private apiUrl = 'http://localhost:3001/tasks';
+    private apiUrl = `${environment.apiUrl}/tasks`;                
     tasks$ = this.tasksSubject.asObservable();
 
     constructor(private http: HttpClient) {
