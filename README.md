@@ -49,7 +49,10 @@ La aplicación cuenta con 3 vistas:
 2. **Backend:** Se utiliza Render porque cuenta con despliegue automático desde GitHub y tiene soporte para Node.js y PostgreSQL.
 1. **Frontend:** Se utiliza Vercel porque es especializado en Frontend y Frameworks Modernos, además, tiene un despliegue automático y rápido:
 
-link backend: https://todo-backend-g7f1.onrender.com
-link frontend: https://to-do-list-orcin-nine.vercel.app
+link backend: 
+https://todo-backend-g7f1.onrender.com
+
+link frontend: 
+https://to-do-list-orcin-nine.vercel.app
    
 
