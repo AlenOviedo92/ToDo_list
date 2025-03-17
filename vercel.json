@@ -1,6 +1,11 @@
 {
-    "public": "dist/to-do-frontend",
-    "routes": [
-      { "src": "/(.*)", "dest": "/index.html" }
-    ]
+  "builds": [
+    {
+      "src": "angular.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "outputDirectory": "dist/to-do-frontend"
+      }
+    }
+  ]
 }
