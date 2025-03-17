@@ -52,6 +52,7 @@ export class ListTaskComponent implements OnInit, AfterViewInit {
         this.taskService.tasks$.subscribe(tasks => {
             this.originalTasks = tasks ?? [];
             this.applyFilter();
+            this.dataSource.paginator = this.paginator;
         });
     }
 
