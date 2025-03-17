@@ -8,7 +8,7 @@ Para el desarrollo del frontend, se ha optado por un stack tecnológico basado e
 
 Al diseñar la estructura del proyecto se tiene en cuenta el principio Separation of Concerns (SoC), cada responsabilidad está separada en módulos específicos (components, services, directives, models). Además, se aplica una arquitectura basada en componentes (add-task, list-task, edit-task, modal), esto garantiza la independencia entre componentes y su posible reutilización. También se implementa el patrón de diseño Dependency Injection (DI), reflejado en la utilización de servicios (task.service.ts y priority.service.ts), que manejan de forma independiente la lógica del negocio y las solicitudes al backend. Finalmente, se trabaja con el modelo MVC adaptado a Angular; los modelos(Task y Priority) definen la estructura de los datos, las vistas serían los archivos .html(components) y los controladores estarían representados por los archivos .ts(components).
 
-## **INSTRUCCIONES DE INSTALACIÓN Y EJECUCIÓN:**
+## **INSTRUCCIONES DE INSTALACIÓN Y EJECUCIÓN EN LOCAL:**
 
 1. Dentro de la carpeta "ToDo" (que se sugirió crear en el README.md de intrucciones del backend) ejecutar el comando: **git clone https://github.com/AlenOviedo92/ToDo_list.git**
 2. Ingresar al directorio clonado: **cd ToDo_list**
@@ -42,3 +42,14 @@ La aplicación cuenta con 3 vistas:
     NOTA: El botón "Enviar" se activa, cuando los 3 inputs obligatorios están diligenciados y pasan las validaciones mencionadas anteriormente.
 
 3. **Formulario de actualización:** Contiene los mismos inputs y validaciones que el formulario de creación.
+
+## **DESPLIEGUE**
+
+1. **Base de datos:** Se utiliza neon.tech porque está diseñado específicamente para PostgreSQL en la nube, lo que permite escalar sin esfuerzo.
+2. **Backend:** Se utiliza Render porque cuenta con despliegue automático desde GitHub y tiene soporte para Node.js y PostgreSQL.
+1. **Frontend:** Se utiliza Vercel porque es especializado en Frontend y Frameworks Modernos, además, tiene un despliegue automático y rápido:
+
+link backend: https://todo-backend-g7f1.onrender.com
+link frontend: https://to-do-list-orcin-nine.vercel.app
+   
+
