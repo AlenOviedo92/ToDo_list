@@ -28,6 +28,11 @@ table {
     width: 1000px;
 }
 
+mat-paginator {
+    display: flex;
+    justify-content: center;
+}
+
 .mat-column-task,
 .mat-column-description {
     width: 20%;
