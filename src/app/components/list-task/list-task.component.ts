@@ -89,6 +89,10 @@ export class ListTaskComponent implements OnInit, AfterViewInit {
         this.router.navigate(['/create']);
     }
 
+    deletedTasks(): void {
+        this.router.navigate(['/deleted']);
+    }
+
     openUpdateTask(id: string): void {
         this.router.navigate([`/update/${id}`]);
     }

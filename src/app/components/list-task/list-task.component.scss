@@ -2,9 +2,18 @@
     text-decoration: line-through;
 }
 
+.header_container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.deleted_tasks {
+    border-radius: 3px;
+}
+
 .add_tasks {
     margin-top: 70px;
-    width: 500px;
+    width: 400px;
     border-radius: 3px;
 }
 

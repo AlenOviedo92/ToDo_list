@@ -1,15 +1,26 @@
 @if (dataSource.data.length === 0) {
     <h2>No hay tareas disponibles</h2>
 } @else {
-    <div class="filter-container">
-        <mat-form-field appearance="outline">
-            <mat-label>Filtrar tareas</mat-label>
-            <mat-select [(value)]="filterValue" (selectionChange)="applyFilter()">
-                <mat-option value="all">Todas</mat-option>
-                <mat-option value="completed">Completadas</mat-option>
-                <mat-option value="pending">Pendientes</mat-option>
-            </mat-select>
-        </mat-form-field>
+    <div class="header_container">
+        <div class="filter-container">
+            <mat-form-field appearance="outline">
+                <mat-label>Filtrar tareas</mat-label>
+                <mat-select [(value)]="filterValue" (selectionChange)="applyFilter()">
+                    <mat-option value="all">Todas</mat-option>
+                    <mat-option value="completed">Completadas</mat-option>
+                    <mat-option value="pending">Pendientes</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <button
+            mat-raised-button 
+            color="primary"
+            class="deleted_tasks"
+            (click)="deletedTasks()"
+        >
+            Tareas Eliminadas
+        </button>
     </div>
 
     <div class="table-wrapper">
@@ -94,4 +105,4 @@
     >
         Agregar Tareas
     </button>
-</div> 
+</div>
