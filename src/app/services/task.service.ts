@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
     providedIn: 'root'
 })
 export class TaskService {
-    private tasks: ITask[] = [];
+    public tasks: ITask[] = [];
     private tasksSubject = new BehaviorSubject<ITask[]>(this.tasks);
     // private apiUrl = 'http://localhost:3001/tasks';
     private apiUrl = `${environment.apiUrl}/tasks`;                

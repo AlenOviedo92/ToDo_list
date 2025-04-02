@@ -5,5 +5,5 @@ export interface ITask {
     description: string;
     date: string;
     recurring: string;
-    completed: boolean;
+    completed: boolean | undefined;
 } 

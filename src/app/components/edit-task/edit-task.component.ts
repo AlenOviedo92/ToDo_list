@@ -56,6 +56,8 @@ export class EditTaskComponent implements OnInit {
 
     updateTask(): void {
 		if (this.taskForm.invalid) return;
+		// const task = this.tasks.find(task => task.id === id);
+		const task = this.taskService.tasks.find(task => task.id === this.taskId);
 
 		const updatedTask: ITask = {
 			id: this.taskId,
@@ -64,7 +66,7 @@ export class EditTaskComponent implements OnInit {
 			priorityId: this.taskForm.value.priority,
 			description: this.taskForm.value.description,
 			recurring: this.taskForm.value.isRecurring ? 'Si' : 'No',
-			completed: false
+			completed: task?.completed,
 		};
 		this.taskService.updateTask(this.taskId, updatedTask);
 		this.router.navigate(['/']);
