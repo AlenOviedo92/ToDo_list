@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { TaskService } from '../../services/task.service';
+import { MatButtonModule } from '@angular/material/button';
 import { ITask } from '../../models/tasks';
 import { Router } from '@angular/router';
 
@@ -14,7 +15,8 @@ import { Router } from '@angular/router';
         CommonModule,
         MatPaginatorModule,
         MatTableModule,
-        MatIconModule
+        MatIconModule,
+        MatButtonModule
     ],
     templateUrl: './deleted-tasks.component.html',
     styleUrl: './deleted-tasks.component.scss'
@@ -46,5 +48,9 @@ export class DeletedTasksComponent implements OnInit, AfterViewInit {
 
     listTasks(): void {
         this.router.navigate(['/tasks']);
+    }
+
+    restoreTask(id: string): void {
+        
     }
 }

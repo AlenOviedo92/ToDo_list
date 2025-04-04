@@ -5,7 +5,7 @@
         <button
             mat-raised-button 
             color="primary"
-            class="deleted_tasks"
+            class="list_tasks"
             (click)="listTasks()"
         >
             Lista de Tareas
@@ -62,6 +62,9 @@
                     <!-- <button mat-icon-button color="accent" (click)="openUpdateTask(element.id)">
                         <mat-icon>edit</mat-icon>
                     </button> -->
+                    <button mat-icon-button color="accent" (click)="restoreTask(element.id)">
+                        <mat-icon>restore</mat-icon>
+                    </button>
                 </td>
             </ng-container>
       
