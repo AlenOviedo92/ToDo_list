@@ -33,8 +33,6 @@ export class TaskService {
     getDeletedTasks(): void {
         this.http.get<ITask[]>(`${this.apiUrl}/deleted`).subscribe({
             next: (deletedTasks) => {
-                // this.tasks = deletedTasks;
-                // this.tasksSubject.next([...this.tasks]); 
                 this.deletedTasksSubject.next(deletedTasks);                                 
             },
             error: (error) => console.error('Error al obtener las tareas eliminadas:', error)
@@ -91,4 +89,19 @@ export class TaskService {
             map(task => task || undefined)
         );
     }
+
+    restoreTask(id: string): void {
+        this.http.put<ITask>(`${this.apiUrl}/restore/${id}`, {}).subscribe({
+            next: (restoredTask) => {
+                // Opcional: lo agregas de nuevo a `tasks` si quieres que aparezca de inmediato en la lista activa
+                this.tasks.push(restoredTask);
+                this.tasksSubject.next([...this.tasks]);
+    
+                // Opcional: remueves la tarea restaurada del listado de eliminadas
+                const updatedDeletedTasks = this.deletedTasksSubject.getValue().filter(task => task.id !== id);
+                this.deletedTasksSubject.next(updatedDeletedTasks);
+            },
+            error: (error) => console.error('Error al restaurar la tarea:', error)
+        });
+    }    
 } 

@@ -51,6 +51,6 @@ export class DeletedTasksComponent implements OnInit, AfterViewInit {
     }
 
     restoreTask(id: string): void {
-        
+        this.taskService.restoreTask(id);
     }
 }
