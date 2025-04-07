@@ -1,4 +1,4 @@
-@if (dataSource.data.length === 0) {
+@if (dataSourceDeleted.data.length === 0) {
     <h2>No hay tareas eliminadas</h2>
 } @else {
     <div class="header_container">
@@ -13,7 +13,7 @@
     </div>
 
     <div class="table-wrapper">
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">        
+        <table mat-table [dataSource]="dataSourceDeleted" class="mat-elevation-z8">        
             <!-- Position Column -->
             <ng-container matColumnDef="position">
                 <th mat-header-cell *matHeaderCellDef> No. </th>

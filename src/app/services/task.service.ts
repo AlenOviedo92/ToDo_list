@@ -10,9 +10,11 @@ import { environment } from '../../environments/environment';
 export class TaskService {
     public tasks: ITask[] = [];
     private tasksSubject = new BehaviorSubject<ITask[]>(this.tasks);
+    private deletedTasksSubject = new BehaviorSubject<ITask[]>([]);
     // private apiUrl = 'http://localhost:3001/tasks';
     private apiUrl = `${environment.apiUrl}/tasks`;                
     tasks$ = this.tasksSubject.asObservable();
+    deletedTasks$ = this.deletedTasksSubject.asObservable();
 
     constructor(private http: HttpClient) {
         this.getTask();
@@ -25,6 +27,17 @@ export class TaskService {
                 this.tasksSubject.next([...this.tasks]);                                  
             },
             error: (error) => console.error('Error al obtener las tareas:', error)
+        });
+    }
+
+    getDeletedTasks(): void {
+        this.http.get<ITask[]>(`${this.apiUrl}/deleted`).subscribe({
+            next: (deletedTasks) => {
+                // this.tasks = deletedTasks;
+                // this.tasksSubject.next([...this.tasks]); 
+                this.deletedTasksSubject.next(deletedTasks);                                 
+            },
+            error: (error) => console.error('Error al obtener las tareas eliminadas:', error)
         });
     }
   

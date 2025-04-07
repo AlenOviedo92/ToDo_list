@@ -23,22 +23,22 @@ import { Router } from '@angular/router';
 })
 export class DeletedTasksComponent implements OnInit, AfterViewInit {
     displayedColumns: string[] = ['position', 'task', 'priority', 'description', 'date', 'recurring', 'actions'];
-    dataSource = new MatTableDataSource<ITask>([]);
+    dataSourceDeleted = new MatTableDataSource<ITask>([]);
     originalTasks: ITask[] = [];                                
 
     @ViewChild(MatPaginator) paginator!: MatPaginator;
 
     ngOnInit(): void {
-        this.taskService.getTask();
-        this.taskService.tasks$.subscribe(tasks => {
-            this.originalTasks = tasks ?? [];
-            this.dataSource.data = this.originalTasks;
-            this.dataSource.paginator = this.paginator;
+        this.taskService.getDeletedTasks();
+        this.taskService.deletedTasks$.subscribe(deletedTasks => {
+            this.originalTasks = deletedTasks ?? [];
+            this.dataSourceDeleted.data = this.originalTasks;
+            this.dataSourceDeleted.paginator = this.paginator;
         });
     }
 
     ngAfterViewInit(): void {
-        this.dataSource.paginator = this.paginator;
+        this.dataSourceDeleted.paginator = this.paginator;
     }
     
     constructor(
